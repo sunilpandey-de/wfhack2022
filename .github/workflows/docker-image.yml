@@ -1,0 +1,23 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: docker login
+      run: |
+       docker login -u ${{ secrets.DOCKER_USER }} -p  ${{ secrets.DOCKER_PASSWORD }}
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag sunilpandey-de/wfhack2022:1.0.0
+    - name: Push Docker Image
+      run: docker push sunilpandey-de/wfhack2022:1.0.0
