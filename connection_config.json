@@ -1,5 +1,5 @@
 {
-"storage_account_name": "wfhackathon2022teamsupersonics",
+"storage_connection": "DefaultEndpointsProtocol=https;AccountName=codesanddoc;AccountKey=ydz3XndrMKSX4aYFOc/TQfr8C6gj2/jQddc75+7FNshlqIGf5bieFfJvDg0M6YFCvGHYwOcU/CKm+AStywykNA==;EndpointSuffix=core.windows.net",
 "storage_account_key": "",
 "api_key": "ccd498f48fe9da653392772756499b63",
 "log_container": "log",
