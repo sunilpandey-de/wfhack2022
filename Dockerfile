@@ -6,4 +6,4 @@ RUN pip install -r requirements.txt
 RUN pwd
 COPY . .
 RUN ls -ltr
-ENTRYPOINT ["python","data_processor.py"]
+ENTRYPOINT ["python","data_processing/data_processor.py"]
