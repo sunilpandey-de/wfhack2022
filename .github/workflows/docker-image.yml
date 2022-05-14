@@ -18,6 +18,7 @@ jobs:
       run: |
        docker login -u ${{ secrets.DOCKER_USER }} -p  ${{ secrets.DOCKER_PASSWORD }}
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag sunilpandey-de/wfhack2022:1.0.0
+      run: docker build . --file Dockerfile --tag wfhackathon2022/wfhackathon2022:tagname
     - name: Push Docker Image
-      run: docker push sunilpandey-de/wfhack2022:1.0.0
+      run: docker push wfhackathon2022/wfhackathon2022:tagname
+      

@@ -2,7 +2,7 @@
 "storage_account_name": "wfhackathon2022teamsupersonics",
 "storage_account_key": "",
 "api_key": "ccd498f48fe9da653392772756499b63",
-"log_container": "",
-"input_container": "",
-"ouput_container": ""
+"log_container": "log",
+"input_container": "input",
+"ouput_container": "output"
 }
