@@ -56,3 +56,5 @@ XlsxWriter
 ethnicolr
 json
 requests
+duckdb
+pandasql
