@@ -54,7 +54,6 @@ urllib3
 wasabi
 XlsxWriter
 ethnicolr
-json
 requests
 duckdb
 pandasql
