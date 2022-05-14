@@ -8,11 +8,11 @@ from data_processing.common_methods import extract_gender_fromname
 
 def get_gender(df, key):
     print("<<<---- Gender prediction is started ---->>>")
-    df['executive1_gender'] = df.apply(lambda row: extract_gender_fromname(row['executiveContact1_name'], key), axis=1)
+    df['executive1_gender'] = df.apply(lambda row: asyncio.run(extract_gender_fromname(row['executiveContact1_name'], key)), axis=1)
     df['executive1_gender'].mask(df['executiveContact1_name'].isnull(), np.nan, inplace=True)
     print("<<<---- Gender prediction for executive1 completed ---->>>")
 
-    df['executive2_gender'] = df.apply(lambda row: extract_gender_fromname(row['executiveContact2_name'], key), axis=1)
+    df['executive2_gender'] = df.apply(lambda row: asyncio.run(extract_gender_fromname(row['executiveContact2_name'], key)), axis=1)
     df['executive2_gender'].mask(df['executiveContact2_name'].isnull(), np.nan, inplace=True)
     print("<<<---- Gender prediction for executive2 completed ---->>>")
 
