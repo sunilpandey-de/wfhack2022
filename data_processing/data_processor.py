@@ -22,12 +22,11 @@ def main():
     minor_df = asyncio.run(get_minor_detect(df))
     print("<<<------ minority detection completed  ------->>>")
 
-    intermediate_df = pd.merge(gender_df, minor_df, on="dunsNum", how="inner")
     print("<<<------ Intermediate data joined ------->>>")
-
-    final_df = pd.merge(df, intermediate_df, on="dunsNum", how="inner")
+    final_df = pd.merge(pd.merge(df, gender_df, on='dunsNum'), minor_df, on='dunsNum', suffixes=('', '_y'))
+    final_df.drop(final_df.filter(regex='_y$').columns.tolist(), axis=1, inplace=True)
     final_df = final_df.loc[:, ]
-    print(final_df.head().to_markdown())
+
 
     xl_writer = pd.ExcelWriter('../Hackathon_Data_MinorityWomenOwned_2022_updated.xlsx', engine='xlsxwriter')
     final_df.to_excel(xl_writer, index=False)

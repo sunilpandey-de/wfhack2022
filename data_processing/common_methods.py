@@ -6,7 +6,7 @@ import pandas as pd
 import requests
 
 
-async def extract_gender_fromname(name, api_key):
+def extract_gender_fromname(name, api_key):
     gender = None
     base_url = f"https://v2.namsor.com/NamSorAPIv2/api2/json/gender/{name}"
     headers = {
