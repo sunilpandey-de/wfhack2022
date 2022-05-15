@@ -1,10 +1,13 @@
 #detect gender from api call
+import logging
 from json import loads
 
 import numpy as np
 import pandas as pd
 import requests
 from genderize import Genderize
+
+from data_processing.baselogger import logger
 
 
 async def extract_gender_fromname(name, api_key):
@@ -35,13 +38,15 @@ def split_pandas_col(df, col_to_split, delimiter):
 def process_excel_file(file, start, end):
     data_excel = pd.read_excel(file)
     data_excel = data_excel.loc[int(float(start)):int(float(end)),:]
+    logger.info("<<<---- Reading the input excel into pandas dataframe ---->>>")
     col_to_split = [col for col in data_excel if col.startswith('executive')]
     name_comp_df = split_pandas_col(data_excel, col_to_split, "-")
     name_comp_df.columns = [x.strip().replace('_0', '_name').replace('_1', '_job') for x in name_comp_df.columns]
-
+    logger.info("<<<---- Splitting Executive column to extract name and job position ---->>>")
     name_col_split = [col for col in name_comp_df if col.endswith('_name')]
     fname_lanme_df = split_pandas_col(name_comp_df, name_col_split, " ")
     fname_lanme_df.columns = [x.strip().replace('name_0', 'fname').replace('name_1', 'lname') for x in fname_lanme_df.columns]
+    logger.info("<<<---- Splitting Executive Name to firstname and lastname ---->>>")
     return fname_lanme_df
 
 
@@ -50,6 +55,7 @@ def json_config_parser(file_path):
         with open(file_path, 'r') as config:
             config_json = config.read().replace('/n', '')
         config_dict = loads(config_json)
+        logger.info("<<<---- Config file read successfully ---->>>")
         return config_dict
     except FileNotFoundError:
         config_dict = None

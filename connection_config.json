@@ -6,5 +6,7 @@
 "log_container": "log",
 "input_container": "input",
 "ouput_container": "output",
-"region_list": "Northern America,Northern Europe,Western Europe,Eastern Europe"
+"region_list": "Northern America,Northern Europe,Western Europe,Eastern Europe",
+"backup_key1": "746941dd70d18d9e21147566090c8035",
+"backup_key2": "48a536234487b0dd97c13a5b7117c905"
 }

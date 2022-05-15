@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from data_processing.detect_gender import get_gender, flag_gender
+from data_processing.detect_gender_diversity import get_gender, flag_gender
 
 
 def test_get_gender():
