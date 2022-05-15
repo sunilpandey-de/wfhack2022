@@ -4,6 +4,7 @@ from json import loads
 import numpy as np
 import pandas as pd
 import requests
+from genderize import Genderize
 
 
 async def extract_gender_fromname(name, api_key):
@@ -53,5 +54,29 @@ def json_config_parser(file_path):
     except FileNotFoundError:
         config_dict = None
         return config_dict
+
+
+async def extract_origin_fromname(name, api_key):
+    region = None
+    base_url = f"https://v2.namsor.com/NamSorAPIv2/api2/json/country/{name}"
+    headers = {
+        "Accept": "application/json",
+        "X-API-KEY": f'{api_key}'
+    }
+    response = requests.request("GET", base_url, headers=headers)
+    if response.status_code not in range(200, 299):
+        return None, None
+    try:
+        region = response.json()['subRegion']
+    except:
+        pass
+    return region
+
+
+async def genderize(name):
+    return Genderize().get([name])[0]['gender']
+
+
+
 
 
