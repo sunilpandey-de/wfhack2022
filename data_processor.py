@@ -8,8 +8,7 @@ from azure.storage.blob import BlobServiceClient
 
 from data_processing.baselogger import logger
 from data_processing.common_methods import process_excel_file, json_config_parser
-from data_processing.detect_gender_diversity import get_gender, get_minor_detect, get_region, detect_gender, \
-    get_minor_detect_cat
+from data_processing.detect_gender_diversity import  detect_gender, get_minor_detect_cat
 
 
 def main():
@@ -24,12 +23,9 @@ def main():
     df = df.apply(lambda x: x.astype(str).str.lower())
     logger.info("<<<------ Reading the source file  ------->>>")
 
-    # gender_df = get_gender(df, config.get("api_key"))
     gender_df = detect_gender(df, pred_model)
     logger.info("<<<------ Gender detection completed  ------->>>")
 
-    # minor_df = asyncio.run(get_minor_detect(df))
-    # minor_df = get_region(df, config)
     df = df.replace('nan', np.nan, regex=True)
     minor_df = get_minor_detect_cat(df, config)
     logger.info("<<<------ Minority detection completed  ------->>>")
@@ -48,7 +44,7 @@ def main():
 
     with open(config.get("output_file"), "rb") as data:
         container_client.upload_blob(
-            name="Hackathon_Data_MinorityWomenOwned_2022_" + str(config.get("start_val")) + "_" + str(config.get("end_val")) + ".xlsx", data=data, overwrite=True)
+            name="Hackathon_Data_MinorityWomenOwned_2022_final_" + str(config.get("start_val")) + "_" + str(config.get("end_val")) + ".xlsx", data=data, overwrite=True)
 
     logger.info("<<<------ Final dataset written to excel ------->>>")
     logger.info("<<<--- %s seconds --->>>" % (time.time() - start_time))

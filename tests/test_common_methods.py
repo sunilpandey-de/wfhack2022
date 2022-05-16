@@ -3,14 +3,9 @@ import collections
 import numpy as np
 import pandas as pd
 import pytest
-from data_processing.common_methods import extract_gender_fromname, json_config_parser, split_pandas_col, \
+from data_processing.common_methods import json_config_parser, split_pandas_col, \
     process_excel_file
 
-
-@pytest.mark.asyncio
-async def test_extract_gender_fromname():
-    gender = await extract_gender_fromname('sunil', 'ccd498f48fe9da653392772756499b63')
-    assert gender == 'male'
 
 
 def test_json_config_parser():
