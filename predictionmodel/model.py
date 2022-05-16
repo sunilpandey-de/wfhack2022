@@ -15,7 +15,7 @@ def preprocess(names_df, train=True):
 
     name_length = 50
     names_df['name'] = [(name + [' ']*name_length)[:name_length]
-        for name in names_df['name']
+                        for name in names_df['name']
                         ]
     logger.info("<<<--- Pad names with spaces to make all names same length  ---->>>>")
 

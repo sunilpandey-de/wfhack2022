@@ -1,12 +1,10 @@
 {
 "storage_connection": "DefaultEndpointsProtocol=https;AccountName=codesanddoc;AccountKey=ydz3XndrMKSX4aYFOc/TQfr8C6gj2/jQddc75+7FNshlqIGf5bieFfJvDg0M6YFCvGHYwOcU/CKm+AStywykNA==;EndpointSuffix=core.windows.net",
-"storage_account_key": "",
-"api_key": "2d9a3098b8e452f2fdd59fa59aad9d18",
-"region_key": "2d9a3098b8e452f2fdd59fa59aad9d18",
-"log_container": "log",
+"start_val": "0",
+"end_val": "59776",
 "input_container": "input",
+"input_file": "Hackathon_Data_MinorityWomenOwned_2022 v1.xlsx",
 "ouput_container": "output",
-"region_list": "Northern America,Northern Europe,Western Europe,Eastern Europe",
-"backup_key1": "746941dd70d18d9e21147566090c8035",
-"backup_key2": "48a536234487b0dd97c13a5b7117c905"
+"output_file": "Hackathon_Data_MinorityWomenOwned_2022_updated.xlsx",
+"region_list": "white,other"
 }

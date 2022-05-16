@@ -14,7 +14,7 @@ async def test_extract_gender_fromname():
 
 
 def test_json_config_parser():
-    config = json_config_parser('../connection_config.json')
+    config = json_config_parser('connection_config.json')
     assert str(config.get("ouput_container")) == "output"
 
 
@@ -30,7 +30,7 @@ def test_split_pandas_col():
 
 
 def test_process_excel_file():
-    file = "../test.xlsx"
+    file = "test.xlsx"
     start = 0
     end = 5
     df = process_excel_file(file, start, end)
